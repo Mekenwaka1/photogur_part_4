@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{picture.title}}</h2>
+<h2>By {{picture.artist}}</h2>
+
+<img src="{{picture.url}}" alt="{{picture.title}}" />
+<h3>{{picture.comments}}</h3>
+<form action="{% url 'create_comment' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="picture" value="{{ picture.pk }}">
+    Name: <input type="text" name = "name">
+    <br><br>
+    <textarea rows="4" cols="50" name="message" value = "Leave comment here"></textarea>
+    <br>
+    <input type="submit" name="submit" value="submit">
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Welcome to the Pictures Page</h2>
+    <ul>
+    {% for picture in pictures %}
+    <article>
+        <a href="{% url 'picture_details' id=picture.pk %}">
+            <li><img src="{{ picture.url}}" /></li>
+        </a>
+        <h4>{{picture.title}} by {{picture.artist}}</h4>
+    </article>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
